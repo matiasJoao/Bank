@@ -27,15 +27,6 @@ public class Usuario {
     @NotBlank
     private String name;
 
-    @Column(name = "email", nullable = false)
-    @NotBlank
-    @Email
-    private String email;
-
-    @Column(name = "password", nullable = false)
-    @NotBlank
-    private String password;
-
     @Column(name = "cpf", nullable = false)
     @NotBlank
     @CPF

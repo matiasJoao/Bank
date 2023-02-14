@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -19,6 +20,9 @@ public class Conta {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID Id;
 
+    @Column(name = "cpf_usuario")
+    @NotBlank
+    private String cpf;
     @Column(name = "agency", nullable = false)
     @NotBlank
     private Integer agency;
@@ -33,7 +37,10 @@ public class Conta {
 
     @Column(name = "verify_digit", nullable = false)
     @NotBlank
-    @CPF
     private Integer verify_digit;
+
+    @Column(name = "balance",  nullable = false)
+    @NotBlank
+    private Double balance;
 
 }
