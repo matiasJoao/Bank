@@ -16,31 +16,30 @@ import java.util.UUID;
 @Entity(name = "Conta")
 @Table(name = "Conta")
 public class Conta {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "Id")
     private UUID Id;
-
-    @Column(name = "cpf_usuario")
+    @Column(name = "id_document", nullable = false)
     @NotBlank
-    private String cpf;
+    private String id_document;
+    @Column(name = "document", nullable = false)
+    @NotBlank
+    private String document;
     @Column(name = "agency", nullable = false)
-    @NotBlank
     private Integer agency;
     @Column(name = "number_account", nullable = false)
-    @NotBlank
     private Integer number_account;
 
     @ManyToOne
     @JoinColumn(name = "type_account", nullable = false)
-    @NotBlank
     private TipoConta type_account;
 
     @Column(name = "verify_digit", nullable = false)
-    @NotBlank
     private Integer verify_digit;
 
     @Column(name = "balance",  nullable = false)
-    @NotBlank
     private Double balance;
 
 }

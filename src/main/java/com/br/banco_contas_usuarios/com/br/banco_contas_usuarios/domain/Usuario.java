@@ -19,23 +19,17 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID Id;
 
-    @OneToMany
-    @JoinColumn(name = "Conta", nullable = false)
-    private List<Conta> contas;
-
     @Column(name = "name", nullable = false)
     @NotBlank
     private String name;
 
-    @Column(name = "cpf", nullable = false)
+    @Column(name = "document", nullable = false)
     @NotBlank
-    @CPF
-    private String cpf;
+    private String document;
 
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "Endereco", nullable = false)
-    @NotBlank
-    private List<Endereco> enderecos;
+    private Endereco endereco;
 
     @Column(name = "number", nullable = false)
     @NotBlank

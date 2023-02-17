@@ -2,6 +2,8 @@ package com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.controller;
 
 
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.domain.Usuario;
+import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.dto.ReturnDTO;
+import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.dto.UsuarioDTO;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.impl.UsuarioImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,11 +14,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    UsuarioImpl usuarioimpl;
+    private UsuarioImpl usuario;
 
     @PostMapping
-    public ResponseEntity save(@RequestBody Usuario usuario){
-     Usuario usuario1 =   usuarioimpl.save(usuario);
-        return ResponseEntity.status(HttpStatus.OK).body(usuario1);
+    @RequestMapping("/cadastro/tipoConta/{tipoConta}")
+    public ResponseEntity save(@RequestBody UsuarioDTO usuarioDTO, @PathVariable("tipoConta") Long tipoConta){
+        ReturnDTO res = usuario.save(usuarioDTO, tipoConta);
+        return  ResponseEntity.status(HttpStatus.CREATED).body(res);
     }
+
 }

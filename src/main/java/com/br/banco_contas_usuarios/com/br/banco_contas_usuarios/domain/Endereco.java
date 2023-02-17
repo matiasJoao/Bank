@@ -24,7 +24,6 @@ public class Endereco {
     private String street_name;
 
     @Column(name = "adress_number", nullable = false)
-    @NotBlank
     private Integer adress_number;
 
     @Column(name = "complement", nullable = false)
@@ -32,7 +31,6 @@ public class Endereco {
     private String complement;
 
     @Column(name = "cep", nullable = false)
-    @NotBlank
     private Integer cep;
 
 
