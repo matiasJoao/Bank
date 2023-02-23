@@ -1,7 +1,7 @@
 package com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.controller;
 
 
-import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.domain.Usuario;
+
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.dto.ReturnDTO;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.dto.UsuarioDTO;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.impl.UsuarioImpl;

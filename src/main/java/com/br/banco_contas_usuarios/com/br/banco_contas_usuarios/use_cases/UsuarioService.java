@@ -10,6 +10,6 @@ import java.util.UUID;
 public interface UsuarioService {
 
     ReturnDTO save(UsuarioDTO usuarioDTO, Long tipoConta);
-    Usuario findById(UUID uuid);
+    Usuario findById(String id);
 
 }

@@ -1,6 +1,7 @@
 package com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.domain;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.br.CPF;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -16,8 +17,9 @@ import java.util.UUID;
 @Table(name = "Usuario")
 public class Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID Id;
+    @GenericGenerator(name="UUIDGenerator", strategy ="uuid2")
+    @GeneratedValue(generator = "UUIDGenerator")
+    private String id;
 
     @Column(name = "name", nullable = false)
     @NotBlank
@@ -26,10 +28,6 @@ public class Usuario {
     @Column(name = "document", nullable = false)
     @NotBlank
     private String document;
-
-    @OneToOne
-    @JoinColumn(name = "Endereco", nullable = false)
-    private Endereco endereco;
 
     @Column(name = "number", nullable = false)
     @NotBlank

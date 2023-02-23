@@ -2,6 +2,7 @@ package com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.domain;
 
 import lombok.*;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
@@ -18,9 +19,9 @@ import java.util.UUID;
 public class Conta {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id")
-    private UUID Id;
+    @GenericGenerator(name="UUIDGenerator", strategy ="uuid2")
+    @GeneratedValue(generator = "UUIDGenerator")
+    private String id;
     @Column(name = "id_document", nullable = false)
     @NotBlank
     private String id_document;

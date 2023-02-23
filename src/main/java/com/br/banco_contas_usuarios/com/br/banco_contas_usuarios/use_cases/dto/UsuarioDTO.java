@@ -10,6 +10,6 @@ import lombok.*;
 public class UsuarioDTO {
     private String name;
     private String document;
-    private Endereco endereco;
+    private EnderecoDTO endereco;
     private String number;
 }

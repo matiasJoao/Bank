@@ -2,6 +2,7 @@ package com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.domain;
 
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 
 import javax.persistence.*;
@@ -16,9 +17,11 @@ import java.util.UUID;
 @Table(name = "Endereco")
 public class Endereco {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID Id;
-
+    @GenericGenerator(name="UUIDGenerator", strategy ="uuid2")
+    @GeneratedValue(generator = "UUIDGenerator")
+    private String id;
+    @Column(name = "usuario_id")
+    private String idUsuario;
     @Column(name = "street_name", nullable = false)
     @NotBlank
     private String street_name;
