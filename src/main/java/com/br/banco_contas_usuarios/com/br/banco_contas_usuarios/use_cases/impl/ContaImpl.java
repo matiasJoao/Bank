@@ -2,7 +2,7 @@ package com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.impl
 
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.domain.Conta;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.repositorys.ContaRepository;
-import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.ContaService;
+import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.services.ContaService;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.dto.CreateAccountDTO;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.utils.GerarContaUtil;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.utils.PegarUsuarioPorIdUtil;

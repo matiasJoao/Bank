@@ -1,4 +1,4 @@
-package com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases;
+package com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.services;
 
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.domain.Conta;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.dto.CreateAccountDTO;

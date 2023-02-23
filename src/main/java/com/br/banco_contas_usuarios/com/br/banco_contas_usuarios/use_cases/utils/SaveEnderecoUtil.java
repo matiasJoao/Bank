@@ -8,13 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class SaveEnderecoUtil {
 
-    @Autowired
-    EnderecoRepository enderecoRepository;
+
     public Endereco saveEndereco(Usuario usuario, UsuarioDTO usuarioDTO){
        var adress = Endereco.builder().cep(usuarioDTO.getEndereco().getCep()).adress_number(usuarioDTO.getEndereco().getAdress_number())
                 .complement(usuarioDTO.getEndereco().getComplement()).street_name(usuarioDTO.getEndereco().getStreet_name())
                 .idUsuario(usuario.getId()).build();
 
-        return enderecoRepository.save(adress);
+        return adress;
     }
 }
