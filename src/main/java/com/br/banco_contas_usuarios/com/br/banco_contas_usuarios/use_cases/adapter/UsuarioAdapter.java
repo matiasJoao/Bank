@@ -8,8 +8,11 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 @Component
 public class UsuarioAdapter {
-     @Autowired
-     UsuarioRepository usuarioRepository;
+     private final UsuarioRepository usuarioRepository;
+
+     public UsuarioAdapter(UsuarioRepository usuarioRepository){
+         this.usuarioRepository = usuarioRepository;
+     }
     public Usuario saveUser (Usuario usuario){
         return  usuarioRepository.save(usuario);
     }

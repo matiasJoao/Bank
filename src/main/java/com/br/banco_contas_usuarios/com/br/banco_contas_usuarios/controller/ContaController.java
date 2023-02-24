@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/conta")
 public class ContaController {
-    @Autowired
-    ContaService contaService;
+   private final ContaService contaService;
+
+    public ContaController(ContaService contaService) {
+       this.contaService = contaService;
+    }
+
     @PostMapping
     @RequestMapping("/cadastro/conta")
     public ResponseEntity createNewAccount(@RequestBody CreateAccountDTO createAccountDTO){
