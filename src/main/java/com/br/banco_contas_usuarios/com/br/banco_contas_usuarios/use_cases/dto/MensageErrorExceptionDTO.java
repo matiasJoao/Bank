@@ -9,7 +9,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MensageErrorExceptionDTO extends Throwable {
+public class MensageErrorExceptionDTO {
 
     public String mensagem;
     public HttpStatus httpStatus;

@@ -34,7 +34,7 @@ public class Endereco {
     private String complement;
 
     @Column(name = "cep", nullable = false)
-    private Integer cep;
+    private String cep;
 
 
 }

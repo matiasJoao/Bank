@@ -25,7 +25,7 @@ public class Usuario {
     @NotBlank
     private String name;
 
-    @Column(name = "document", nullable = false)
+    @Column(name = "document", nullable = false, unique = true)
     @NotBlank
     private String document;
 

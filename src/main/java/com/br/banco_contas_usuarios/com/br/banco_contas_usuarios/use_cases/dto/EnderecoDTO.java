@@ -16,5 +16,5 @@ public class EnderecoDTO {
 
     private String complement;
 
-    private Integer cep;
+    private String cep;
 }
