@@ -5,7 +5,6 @@ import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.domain.TipoCont
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.domain.Usuario;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.exception.exception_class.CriarNovaContaError;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.exception.exception_class.TipoErradoParaCnpjError;
-import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.repositorys.ContaRepository;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.dto.CreateAccountDTO;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +17,7 @@ public class GerarContaUtil {
     int max = 5000;
     int number_random_account = (int) Math.floor(Math.random() * (max - min + 1) + min);
 
-    public GerarContaUtil(PegarUsuarioPorIdUtil pegarUsuarioPorIdUtil,ValidaCnpjUtil validaCnpjUtil) {
+    public GerarContaUtil(PegarUsuarioPorIdUtil pegarUsuarioPorIdUtil, ValidaCnpjUtil validaCnpjUtil) {
         this.pegarUsuarioPorIdUtil = pegarUsuarioPorIdUtil;
         this.validaCnpjUtil = validaCnpjUtil;
     }
@@ -40,7 +39,7 @@ public class GerarContaUtil {
         var res = pegarUsuarioPorIdUtil.idUser(createAccountDTO.getIdUsuario());
         var cnpj = validaCnpjUtil.valida(createAccountDTO.getDocumentAccount());
         if (!res.isEmpty()) {
-            if(createAccountDTO.getTipoConta().getId() == 1 && cnpj){
+            if (createAccountDTO.getTipoConta().getId() == 1 && cnpj) {
                 throw new TipoErradoParaCnpjError();
             }
             var conta = Conta.builder().agency(agency).balance(0.0)

@@ -20,4 +20,8 @@ public class ContaAdapter {
     public Optional<Conta> findById(String id){
         return contaRepository.findById(id);
     }
+    public Optional<Conta> findByDocument(String document){
+        return contaRepository.findByDocument(document);
+    }
+
 }

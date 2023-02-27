@@ -21,16 +21,40 @@ public class Transacoes {
     @GenericGenerator(name="UUIDGenerator", strategy ="uuid2")
     @GeneratedValue(generator = "UUIDGenerator")
     private String id;
-    @Column(nullable = false)
+
+    @Column
+    private String tipoTransacao;
+    @Column
+    private String idUsuario;
+    @Column
     private String idContaOrigem;
-    @Column(nullable = false)
+    @Column
+    private Integer agencyContaOrigem;
+    @Column
+    private Integer numberAccountContaOrigem;
+    @Column
     private String idContaDestino;
-    @Column(nullable = false)
+    @Column
+    private Integer agencyContaDestino;
+    @Column
+    private Integer numberAccountContaDestino;
+    @Column
     private String tipoTransferencia;
-    @Column(nullable = false)
+    @Column
     private Double valorTransferencia;
+    @Column
+    private Integer agency;
+    @Column
+    private Integer numberAccount;
+    @Column
+    private Double saldoAntigo;
+    @Column
+    private Double saldoNovo;
+    @Column
+    private Double valorDeposito;
+    @Column
+    private Double saque;
     @Column(nullable = false)
     private Date date;
-
 
 }

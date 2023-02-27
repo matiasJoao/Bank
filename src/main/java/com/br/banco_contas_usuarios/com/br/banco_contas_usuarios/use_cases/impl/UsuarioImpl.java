@@ -4,16 +4,13 @@ package com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.impl
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.domain.Usuario;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.exception.exception_class.CpfExceptionError;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.exception.exception_class.TipoErradoParaCnpjError;
-import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.repositorys.EnderecoRepository;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.adapter.ContaAdapter;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.adapter.EnderecoAdapter;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.adapter.UsuarioAdapter;
-import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.dto.MensageErrorExceptionDTO;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.dto.ReturnDTO;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.dto.UsuarioDTO;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.services.UsuarioService;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.utils.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -78,7 +75,7 @@ public class UsuarioImpl implements UsuarioService {
             System.out.println(contaCreated);
             return ReturnDTO.builder().type_account(contaCreated.getType_account().getType_account()).number_account(contaCreated.getNumber_account())
                     .verify_digit(contaCreated.getVerify_digit()).balance(contaCreated.getBalance())
-                    .agency(contaCreated.getAgency()).endereco(adressCreated).name(usuarioDTO.getName()).build();
+                    .agency(contaCreated.getAgency()).endereco(adressCreated).name(usuario1.getName()).build();
         }
         throw new CpfExceptionError();
     }

@@ -9,7 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class ReturnDTO {
-
     private String name;
     private Endereco endereco;
     private Integer agency;
