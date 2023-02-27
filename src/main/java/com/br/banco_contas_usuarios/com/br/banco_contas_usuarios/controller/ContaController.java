@@ -25,7 +25,7 @@ public class ContaController {
     @PostMapping
     @RequestMapping("/deposito")
     public ResponseEntity deposito(@RequestBody DepositoDTO depositoDTO){
-        var res = verificar o documento e alterar saldo (depositoDTO);
+        var res = verificar o documento e alterar saldo s (depositoDTO);
     }
 
 }
