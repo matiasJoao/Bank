@@ -25,7 +25,7 @@ public class Conta {
     @Column(name = "id_document", nullable = false)
     @NotBlank
     private String id_document;
-    @Column(name = "document", nullable = false)
+    @Column(name = "document", nullable = false, unique = true)
     @NotBlank
     private String document;
     @Column(name = "agency", nullable = false)

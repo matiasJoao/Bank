@@ -8,7 +8,11 @@ import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.servi
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.utils.GerarContaUtil;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.utils.ValidaCnpjUtil;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.utils.ValidaCpfUtil;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Optional;
 
 @Service
 public class ContaImpl implements ContaService {
@@ -43,5 +47,10 @@ public class ContaImpl implements ContaService {
             return save(res);
         }
             throw new RuntimeException("error");
+    }
+
+    @Override
+    public Optional<Conta> findById(String id) {
+       return Optional.ofNullable(contaAdapter.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Conta Não Encontrada")));
     }
 }

@@ -4,6 +4,8 @@ import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.domain.Conta;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.repositorys.ContaRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class ContaAdapter {
 
@@ -14,5 +16,8 @@ public class ContaAdapter {
 
     public Conta saveConta (Conta conta){
         return contaRepository.save(conta);
+    }
+    public Optional<Conta> findById(String id){
+        return contaRepository.findById(id);
     }
 }
