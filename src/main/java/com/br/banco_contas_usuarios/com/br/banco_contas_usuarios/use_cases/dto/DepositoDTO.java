@@ -16,6 +16,8 @@ public class DepositoDTO {
     public Double depositoValor;
     public Double saldoAnterior;
     public Double novoSaldo;
-    private String idUsuario;
+
     public Date date;
+
+    public String idUsuario;
 }

@@ -13,47 +13,36 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @Data
-@Entity(name = "Transocoes_contas")
-@Table(name = "Transocoes_contas")
-public class Transacoes {
+@Entity
+@Table
+public class Transferencias {
 
     @Id
     @GenericGenerator(name="UUIDGenerator", strategy ="uuid2")
     @GeneratedValue(generator = "UUIDGenerator")
     private String id;
-
-    @Column
-    private String tipoTransacao;
-    @Column
+    @Column(nullable = false)
     private String idUsuario;
-    @Column
+    @Column(nullable = false)
     private String idContaOrigem;
-    @Column
-    private Integer agencyContaOrigem;
-    @Column
-    private Integer numberAccountContaOrigem;
-    @Column
+    @Column(nullable = false)
+    private Integer agenciaContaOrigem;
+    @Column(nullable = false)
+    private Integer numeroContaOrigem;
+    @Column(nullable = false)
     private String idContaDestino;
-    @Column
-    private Integer agencyContaDestino;
-    @Column
-    private Integer numberAccountContaDestino;
-    @Column
+    @Column(nullable = false)
+    private Integer agenciaContaDestino;
+    @Column(nullable = false)
+    private Integer numeroContaDestino;
+    @Column(nullable = false)
     private String tipoTransferencia;
-    @Column
+    @Column(nullable = false)
     private Double valorTransferencia;
-    @Column
-    private Integer agency;
-    @Column
-    private Integer numberAccount;
-    @Column
+    @Column(nullable = false)
     private Double saldoAntigo;
-    @Column
+    @Column(nullable = false)
     private Double saldoNovo;
-    @Column
-    private Double valorDeposito;
-    @Column
-    private Double saque;
     @Column(nullable = false)
     private Date date;
 

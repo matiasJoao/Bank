@@ -20,4 +20,8 @@ public class UsuarioAdapter {
     public Optional<Usuario> findById (String id){
         return usuarioRepository.findById(id);
     }
+
+    public Optional<Usuario> findByDocument (String document){
+        return usuarioRepository.findByDocument(document);
+    }
 }
