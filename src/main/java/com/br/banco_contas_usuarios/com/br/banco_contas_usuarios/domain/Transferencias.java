@@ -16,7 +16,6 @@ import java.util.Date;
 @Entity
 @Table
 public class Transferencias {
-
     @Id
     @GenericGenerator(name="UUIDGenerator", strategy ="uuid2")
     @GeneratedValue(generator = "UUIDGenerator")
@@ -45,5 +44,6 @@ public class Transferencias {
     private Double saldoNovo;
     @Column(nullable = false)
     private Date date;
+
 
 }

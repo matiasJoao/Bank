@@ -21,7 +21,7 @@ public class DepositoImpl implements DepositoService {
     @Override
     public DepositoDTO save(DepositoDTO depositoDTO) {
         var res = depositoUtil.deposito(depositoDTO);
-
+        System.out.println(res);
         var deposito = Deposito.builder().valorDeposito(res.getDepositoValor())
                 .documentConta(res.getDocument())
                 .agencia(res.getAgency())
@@ -29,6 +29,7 @@ public class DepositoImpl implements DepositoService {
                 .idUsuario(res.getIdUsuario())
                 .numeroConta(res.getNumber_account())
                 .saldoNovo(res.getNovoSaldo())
+                .idConta(res.getIdConta())
                 .build();
         depositoAdapter.save(deposito);
         return res;

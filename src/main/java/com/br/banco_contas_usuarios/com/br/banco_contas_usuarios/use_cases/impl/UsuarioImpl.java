@@ -50,7 +50,7 @@ public class UsuarioImpl implements UsuarioService {
         if(cpfVal){
             Usuario usuario = Usuario.builder().document(usuarioDTO.getDocument())
                     .name(usuarioDTO.getName()).number(usuarioDTO.getNumber()).build();
-            Usuario usuario1 = usuarioAdapter.saveUser(usuario);
+            var usuario1 = usuarioAdapter.saveUser(usuario);
             var conta = gerarContaUtil.gerarFirstConta(usuario1, tipoConta);
             var contaCreated = contaAdapter.saveConta(conta);
             var adress = saveEnderecoUtil.saveEndereco(usuario1, usuarioDTO);

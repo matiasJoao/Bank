@@ -34,7 +34,7 @@ public class DepositoUtil {
           var saldoNovo = res.get().getBalance().doubleValue() + depositoDTO.getDepositoValor();
           res.get().setBalance(saldoNovo);
           contaAdapter.saveConta(res.get());
-          return DepositoDTO.builder().depositoValor(depositoDTO.getDepositoValor())
+          var dep = DepositoDTO.builder().depositoValor(depositoDTO.getDepositoValor())
                   .date(new Date())
                   .agency(res.get().getAgency())
                   .number_account(res.get().getNumber_account())
@@ -42,7 +42,10 @@ public class DepositoUtil {
                   .novoSaldo(res.get().getBalance())
                   .saldoAnterior(saldoAnterior)
                   .idUsuario(res.get().getId_document())
+                  .idConta(res.get().getId())
                   .build();
+
+          return dep;
       }
     throw new RuntimeException("error");
 

@@ -20,4 +20,6 @@ public class DepositoDTO {
     public Date date;
 
     public String idUsuario;
+
+    public String idConta;
 }
