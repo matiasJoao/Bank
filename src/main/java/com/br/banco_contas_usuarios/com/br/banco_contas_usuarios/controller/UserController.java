@@ -21,9 +21,9 @@ public class UserController {
     }
 
     @PostMapping
-    @RequestMapping("/cadastro/tipoConta/{tipoConta}")
-    public ResponseEntity save(@RequestBody UsuarioDTO usuarioDTO, @PathVariable("tipoConta") Long tipoConta){
-        ReturnDTO res = usuarioService.save(usuarioDTO, tipoConta);
+    @RequestMapping("/cadastro")
+    public ResponseEntity save(@RequestBody UsuarioDTO usuarioDTO){
+        ReturnDTO res = usuarioService.save(usuarioDTO);
         return  ResponseEntity.status(HttpStatus.CREATED).body(res);
     }
 

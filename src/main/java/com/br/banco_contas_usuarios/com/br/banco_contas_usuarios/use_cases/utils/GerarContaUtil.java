@@ -6,6 +6,7 @@ import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.domain.Usuario;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.exception.exception_class.CriarNovaContaError;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.exception.exception_class.TipoErradoParaCnpjError;
 import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.dto.CreateAccountDTO;
+import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.dto.UsuarioDTO;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -22,7 +23,7 @@ public class GerarContaUtil {
         this.validaCnpjUtil = validaCnpjUtil;
     }
 
-    public Conta gerarFirstConta(Usuario usuario, Long tipoConta) {
+    public Conta gerarFirstConta(Usuario usuario, UsuarioDTO usuarioDTO) {
 
         Conta conta = new Conta();
         conta.setVerify_digit(9);
@@ -30,8 +31,9 @@ public class GerarContaUtil {
         conta.setBalance(0.0);
         conta.setAgency(agency);
         conta.setNumber_account(number_random_account);
-        conta.setType_account(TipoConta.builder().id(tipoConta).build());
+        conta.setType_account(usuarioDTO.getTipoConta());
         conta.setId_document(usuario.getId());
+        conta.setQuantidadeSaque(usuarioDTO.getTipoConta().getQuantidadeSaque());
         return conta;
     }
 
@@ -39,7 +41,7 @@ public class GerarContaUtil {
         var res = pegarUsuarioPorIdUtil.idUser(createAccountDTO.getIdUsuario());
         var cnpj = validaCnpjUtil.valida(createAccountDTO.getDocumentAccount());
         if (!res.isEmpty()) {
-            if (createAccountDTO.getTipoConta().getId() == 1 && cnpj) {
+            if (createAccountDTO.getTipoConta().getSigla().equalsIgnoreCase("pf") && cnpj) {
                 throw new TipoErradoParaCnpjError();
             }
             var conta = Conta.builder().agency(agency).balance(0.0)
@@ -48,6 +50,7 @@ public class GerarContaUtil {
                     .number_account(number_random_account)
                     .verify_digit(9)
                     .type_account(createAccountDTO.getTipoConta())
+                    .quantidadeSaque(createAccountDTO.getTipoConta().getQuantidadeSaque())
                     .build();
             return conta;
         }

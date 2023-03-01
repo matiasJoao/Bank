@@ -6,7 +6,7 @@ import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.dto.U
 
 public interface UsuarioService {
 
-    ReturnDTO save(UsuarioDTO usuarioDTO, Long tipoConta);
+    ReturnDTO save(UsuarioDTO usuarioDTO);
 
     Usuario findById(String id);
 

@@ -25,6 +25,9 @@ public class TransferenciasUtil {
         var contaOrigem = contaAdapter.findByDocument(transacoesDTO.getDocumentOrigem());
         var contaDestino = contaAdapter.findByDocument(transacoesDTO.getDocumentDestino());
         Date date = new Date();
+        if(contaOrigem.get().getBalance() < transacoesDTO.getValorTransferencia()){
+            throw new RuntimeException("error de saldo invalido");
+        }
 
         Double oldBalanceOrigem = contaOrigem.get().getBalance();
 

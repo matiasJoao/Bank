@@ -1,20 +1,20 @@
 package com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.domain;
 
-import lombok.*;
-
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-@Builder
 @AllArgsConstructor
-@Data
-@Entity(name = "Tipo_Conta")
-@Table(name = "Tipo_Conta")
-public class TipoConta {
+@Getter
+public enum TipoConta {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column(name = "type_account", nullable = false)
-    private String type_account;
+    PJ ("PJ","Pessoa Juridica",50),
+    PF("PF","Pessoa Fisica",5),
+    GOV("GOV","Governamental",250);
+
+    private String sigla;
+    private String descricao;
+    private Integer quantidadeSaque;
+
 }

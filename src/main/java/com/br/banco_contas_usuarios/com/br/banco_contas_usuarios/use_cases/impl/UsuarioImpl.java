@@ -43,7 +43,7 @@ public class UsuarioImpl implements UsuarioService {
 
 
     @Override
-    public ReturnDTO save(UsuarioDTO usuarioDTO, Long tipoConta) {
+    public ReturnDTO save(UsuarioDTO usuarioDTO) {
        var cpfVal = validaCpfUtil.valida(usuarioDTO.getDocument());
        var cnpjVal = validaCnpjUtil.valida(usuarioDTO.getDocument());
        var nameRes = nameValidationUtil.resValidation(usuarioDTO.getName());
@@ -51,29 +51,29 @@ public class UsuarioImpl implements UsuarioService {
             Usuario usuario = Usuario.builder().document(usuarioDTO.getDocument())
                     .name(usuarioDTO.getName()).number(usuarioDTO.getNumber()).build();
             var usuario1 = usuarioAdapter.saveUser(usuario);
-            var conta = gerarContaUtil.gerarFirstConta(usuario1, tipoConta);
+            var conta = gerarContaUtil.gerarFirstConta(usuario1, usuarioDTO);
             var contaCreated = contaAdapter.saveConta(conta);
             var adress = saveEnderecoUtil.saveEndereco(usuario1, usuarioDTO);
             var adressCreated = enderecoAdapter.save(adress);
             System.out.println(adressCreated);
             System.out.println(contaCreated);
-            return ReturnDTO.builder().type_account(contaCreated.getType_account().getType_account()).number_account(contaCreated.getNumber_account())
+            return ReturnDTO.builder().type_account(contaCreated.getType_account().getSigla()).number_account(contaCreated.getNumber_account())
                     .verify_digit(contaCreated.getVerify_digit()).balance(contaCreated.getBalance())
                     .agency(contaCreated.getAgency()).endereco(adressCreated).name(usuarioDTO.getName()).build();
         } else if (cnpjVal) {
-            if(tipoConta == 1){
+        if(usuarioDTO.getTipoConta().getSigla().equalsIgnoreCase("pf")){
                 throw new TipoErradoParaCnpjError();
             }
             Usuario usuario = Usuario.builder().document(usuarioDTO.getDocument())
                     .name(usuarioDTO.getName()).number(usuarioDTO.getNumber()).build();
             Usuario usuario1 = usuarioAdapter.saveUser(usuario);
-            var conta = gerarContaUtil.gerarFirstConta(usuario1, tipoConta);
+            var conta = gerarContaUtil.gerarFirstConta(usuario1, usuarioDTO);
             var contaCreated = contaAdapter.saveConta(conta);
             var adress = saveEnderecoUtil.saveEndereco(usuario1, usuarioDTO);
             var adressCreated = enderecoAdapter.save(adress);
             System.out.println(adressCreated);
             System.out.println(contaCreated);
-            return ReturnDTO.builder().type_account(contaCreated.getType_account().getType_account()).number_account(contaCreated.getNumber_account())
+            return ReturnDTO.builder().type_account(contaCreated.getType_account().getDescricao()).number_account(contaCreated.getNumber_account())
                     .verify_digit(contaCreated.getVerify_digit()).balance(contaCreated.getBalance())
                     .agency(contaCreated.getAgency()).endereco(adressCreated).name(usuario1.getName()).build();
         }

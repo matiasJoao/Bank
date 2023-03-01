@@ -32,9 +32,7 @@ public class Conta {
     private Integer agency;
     @Column(name = "number_account", nullable = false)
     private Integer number_account;
-
-    @ManyToOne
-    @JoinColumn(name = "type_account", nullable = false)
+    @Enumerated(EnumType.STRING)
     private TipoConta type_account;
 
     @Column(name = "verify_digit", nullable = false)
@@ -42,5 +40,8 @@ public class Conta {
 
     @Column(name = "balance",  nullable = false)
     private Double balance;
+
+    @Column(nullable = false)
+    private Integer quantidadeSaque;
 
 }
