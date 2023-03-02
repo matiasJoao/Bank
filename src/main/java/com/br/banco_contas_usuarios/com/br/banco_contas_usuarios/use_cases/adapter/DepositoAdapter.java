@@ -6,6 +6,7 @@ import com.br.banco_contas_usuarios.com.br.banco_contas_usuarios.use_cases.dto.D
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.List;
 
 @Component
 public class DepositoAdapter {
@@ -20,5 +21,8 @@ public class DepositoAdapter {
     public Deposito save(Deposito deposito){
         return  depositoRepository.save(deposito);
 
+    }
+    public List<Deposito> findByIdUsuario(String idUsuario){
+        return depositoRepository.findByIdUsuario(idUsuario);
     }
 }
